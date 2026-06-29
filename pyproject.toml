@@ -19,7 +19,29 @@ personal-finance = "personal_finance:main"
 requires = ["uv_build>=0.11.0,<0.12.0"]
 build-backend = "uv_build"
 
+[tool.ruff]
+line-length = 88
+extend-exclude = ["*.ipynb"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # isort
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "SIM", # flake8-simplify
+]
+
+[tool.ty.environment]
+python-version = "3.13"
+
+[tool.ty.src]
+exclude = ["**/*.ipynb"]
+
 [dependency-groups]
 dev = [
     "ipykernel>=7.3.0",
+    "ruff>=0.15.20",
+    "ty>=0.0.55",
 ]

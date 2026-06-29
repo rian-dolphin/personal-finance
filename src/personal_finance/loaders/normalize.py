@@ -30,7 +30,10 @@ def normalize_aib(df: pl.DataFrame, account: str) -> pl.DataFrame:
         )
         .str.strip_chars()
         .alias("description"),
-        (pl.col("credit_amount").fill_null(0.0) - pl.col("debit_amount").fill_null(0.0)).alias("amount"),
+        (
+            pl.col("credit_amount").fill_null(0.0)
+            - pl.col("debit_amount").fill_null(0.0)
+        ).alias("amount"),
         pl.lit(0.0).alias("fee"),
         pl.col("currency"),
         pl.col("balance"),
